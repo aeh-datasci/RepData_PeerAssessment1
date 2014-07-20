@@ -9,13 +9,13 @@ activity=read.csv("activity.csv")
 
 ## Distribution of total number of steps taken per day
 
-```{r histogram, echo=FALSE}
+```{r histogram, echo=TRUE}
 hist(activity$steps, main="Distribution of total number of steps per day", xlab="Total number of steps per day")
 ```
 
 ## What is mean total number of steps taken per day?
 
-```{r mean, echo=FALSE}
+```{r mean, echo=TRUE}
 meansteps=mean(activity$steps, na.rm=TRUE)
 mediansteps=median(activity$steps, na.rm=TRUE)
 ```
@@ -25,14 +25,14 @@ Median number of steps: `r mediansteps`
 
 ## What is the average daily activity pattern?
 
-```{r plot, echo=FALSE}
+```{r plot, echo=TRUE}
 means=aggregate(activity$steps~activity$interval, activity, mean)
 plot(means[,1], means[,2], type="l", ylab="Average number of steps", xlab="Time of day")
 
 ```
 ## Imputing missing values
 
-```{r missingvalues, echo=FALSE}
+```{r missingvalues, echo=TRUE}
 
 totmsngsteps=sum(is.na(activity$steps))
 totmsngintv=sum(is.na(activity$interval))
@@ -42,7 +42,7 @@ The number of missing values in the step variable is `r totmsngsteps`.
 The number of missing values in the interval variable is `r totmsngintv`.
 The number of missing values in the date variable is `r totmsngdate`.
 
-```{r imputevalues, echo=FALSE}
+```{r imputevalues, echo=TRUE}
 
 mergeMeans=merge(activity,means,by.x="interval",by.y="activity$interval")
 mergeMeans$steps[is.na(mergeMeans$steps)] = mergeMeans[is.na(mergeMeans$steps),4]
@@ -59,7 +59,7 @@ Median number of steps with missing values imputed : `r mediansteps`
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
-```{r plotweekend, echo=FALSE}
+```{r plotweekend, echo=TRUE}
 daysweek=weekdays(as.Date(mergeMeans$date))
 weekend=c("Saturday","Sunday")
 weekenddata=daysweek %in% weekend
