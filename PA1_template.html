@@ -222,6 +222,8 @@ totmsngdate=sum(is.na(activity$date))
 The number of missing values in the interval variable is 0.
 The number of missing values in the date variable is 0.</p>
 
+<p>Missing values in the step variable are imputed by taking the mean of the step variable for the same time interval on other days.</p>
+
 <pre><code class="r">mergeMeans=merge(activity,means,by.x=&quot;interval&quot;,by.y=&quot;activity$interval&quot;)
 mergeMeans$steps[is.na(mergeMeans$steps)] = mergeMeans[is.na(mergeMeans$steps),4]
 

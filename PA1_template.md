@@ -49,6 +49,8 @@ The number of missing values in the step variable is 2304.
 The number of missing values in the interval variable is 0.
 The number of missing values in the date variable is 0.
 
+Missing values in the step variable are imputed by taking the mean of the step variable for the same time interval on other days.
+
 
 ```r
 mergeMeans=merge(activity,means,by.x="interval",by.y="activity$interval")

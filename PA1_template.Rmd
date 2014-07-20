@@ -42,6 +42,8 @@ The number of missing values in the step variable is `r totmsngsteps`.
 The number of missing values in the interval variable is `r totmsngintv`.
 The number of missing values in the date variable is `r totmsngdate`.
 
+Missing values in the step variable are imputed by taking the mean of the step variable for the same time interval on other days.
+
 ```{r imputevalues, echo=TRUE}
 
 mergeMeans=merge(activity,means,by.x="interval",by.y="activity$interval")
